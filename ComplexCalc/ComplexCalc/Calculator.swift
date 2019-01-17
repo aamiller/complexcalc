@@ -80,16 +80,27 @@ class Calculator {
     func divide(lhs : (Int, Int), rhs : (Int, Int)) -> (Int, Int) {
          return (lhs.0 / rhs.0, lhs.1 / rhs.1 )
     }
-//
-//    // String-to-Int dictionary methods
-//    func add(lhs: [String : Int], rhs: [String : Int]) -> [String : Int] {
-//        for (i, val) in rhs {
-//            if (
-//    }
-//    func subtract(lhs: [String : Int], rhs: [String : Int]) -> [String : Int] {
-//        return ["a" : 1]
-//    }
-//
+
+    // String-to-Int dictionary methods
+    func add(lhs: [String : Int], rhs: [String : Int]) -> [String : Int] {
+        var output : [String : Int] = [:]
+        for (key, lhsVal) in lhs {
+            if let rhsVal = rhs[key] {
+                output[key] = lhsVal + rhsVal
+            }
+        }
+        return output
+    }
+    
+    func subtract(lhs: [String : Int], rhs: [String : Int]) -> [String : Int] {
+        var output : [String : Int] = [:]
+        for (key, lhsVal) in lhs {
+            if let rhsVal = rhs[key] {
+                output[key] = lhsVal - rhsVal
+            }
+        }
+        return output    }
+
 //    // Math op, ex. `lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20`
 //
 //    func mathOp(lhs: [String : Int], rhs: [String : Int], op : String) -> [String : Int] {
