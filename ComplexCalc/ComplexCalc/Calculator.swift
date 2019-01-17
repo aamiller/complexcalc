@@ -101,16 +101,19 @@ class Calculator {
         }
         return output    }
 
-//    // Math op, ex. `lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20`
-//
-//    func mathOp(lhs: [String : Int], rhs: [String : Int], op : String) -> [String : Int] {
-//        return ["a" : 1]
-//    }
-//
-//    func mathOp(args: [Int], beg: Int, op : String) -> Int {
-//        return 1
-//    }
-    
+    // Math op, ex. `lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20`
+
+    func mathOp(lhs: Int, rhs: Int, op : (Int, Int) -> Int) -> Int {
+        return op(lhs, rhs)
+    }
+
+    func mathOp(args: [Int], beg: Int, op : (Int, Int) -> Int) -> Int {
+        var output = beg
+        for i in 0...(args.count - 1) {
+            output = op(output, args[i])
+        }
+        return output
+    }
 }
 
 
